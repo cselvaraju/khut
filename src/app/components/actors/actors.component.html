@@ -1,0 +1,79 @@
+<div class="container">
+  <h3>
+    Actors Component
+  </h3>
+
+  <p>List of Actors</p>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actor of actorList; index as i">
+        <td>{{ actor.name }}</td>
+        <td>{{ actor.city }}</td>
+        <td>
+          <span *ngIf="i !== selectedIndex">
+            <button class="btn btn-info btn-sm" (click)="selectActor(i)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteActor(i)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </span>
+          <span *ngIf="i === selectedIndex">
+            <button class="btn btn-info btn-sm">
+              <i class="fa fa-save"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="cancelEdit()">
+              <i class="fa fa-undo"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <h5>Add Actor Form</h5>
+    <p>
+      <label for="">
+        Actor Name:
+        <input type="text" [(ngModel)]="newActorName">
+      </label>
+    </p>
+    <p>
+      <label for="">
+        Actor City:
+        <input type="text" [(ngModel)]="newActorCity">
+      </label>
+    </p>
+    <p>
+      <button (click)="addActor()">Add Actor</button>
+    </p>
+  </div>
+
+  <div>
+    <h5>Add Actor Form - 2</h5>
+    <p>
+      <label for="">
+        Actor Name:
+        <input type="text" [(ngModel)]="myActor.name">
+      </label>
+    </p>
+    <p>
+      <label for="">
+        Actor City:
+        <input type="text" [(ngModel)]="myActor.city">
+      </label>
+    </p>
+    <p>
+      <button (click)="addActorV2()">Add Actor</button>
+    </p>
+  </div>
+
+</div>
